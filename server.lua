@@ -1,22 +1,22 @@
 
-RegisterServerEvent('qb-pizzaruns:Payment')
-AddEventHandler('qb-pizzaruns:Payment', function()
+RegisterServerEvent('qb-pizzajob:Payment')
+AddEventHandler('qb-pizzajob:Payment', function()
 	local _source = source
 	local Player = QBCore.Functions.GetPlayer(_source)
     Player.Functions.AddMoney("cash", 150, "sold-pizza")
     TriggerClientEvent("QBCore:Notify", _source, "You recieved $150", "success")
 end)
 
-RegisterServerEvent('qb-pizzaruns:TakeDeposit')
-AddEventHandler('qb-pizzaruns:TakeDeposit', function()
+RegisterServerEvent('qb-pizzajob:TakeDeposit')
+AddEventHandler('qb-pizzajob:TakeDeposit', function()
 	local _source = source
 	local Player = QBCore.Functions.GetPlayer(_source)
     Player.Functions.RemoveMoney("bank", 100, _source, "pizza-deposit")
     TriggerClientEvent("QBCore:Notify", _source, "You were charged a deposit of $100", "error")
 end)
 
-RegisterServerEvent('qb-pizzaruns:ReturnDeposit')
-AddEventHandler('qb-pizzaruns:ReturnDeposit', function(info)
+RegisterServerEvent('qb-pizzajob:ReturnDeposit')
+AddEventHandler('qb-pizzajob:ReturnDeposit', function(info)
 	local _source = source
     local Player = QBCore.Functions.GetPlayer(_source)
     
