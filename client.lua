@@ -13,11 +13,6 @@ Config.Zones = {
 
 }
 
-QBCore = nil
-PlayerData = {}
-TriggerEvent('QBCore:GetObject', function(obj) QBCore = obj end)
-
-
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
 AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
     isLoggedIn = true
