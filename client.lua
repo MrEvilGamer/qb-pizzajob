@@ -74,7 +74,7 @@ function PullOutVehicle()
         DrawTarget()
         AddCancelBlip()
         ownsVan = true
-        TriggerServerEvent("qb-pizzaruns:TakeDeposit")
+        TriggerServerEvent("qb-pizzajob:TakeDeposit")
     end
 end
 
@@ -381,7 +381,7 @@ function DeliverPizza()
 end
 
 function NextDelivery()
-    TriggerServerEvent('qb-pizzaruns:Payment')
+    TriggerServerEvent('qb-pizzajob:Payment')
     Citizen.Wait(300)
     DrawTarget()
 end
@@ -437,7 +437,7 @@ function EndOfWork()
         if IsVehicleModel(Van, GetHashKey('blazer3')) then
             QBCore.Functions.DeleteVehicle(Van)
             if Delivered == true then
-                TriggerServerEvent("qb-pizzaruns:ReturnDeposit", 'end')
+                TriggerServerEvent("qb-pizzajob:ReturnDeposit", 'end')
             end
             InService = false
             BlipSell = nil
