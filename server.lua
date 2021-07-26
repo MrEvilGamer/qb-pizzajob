@@ -1,5 +1,3 @@
-QBCore = nil
-TriggerEvent('QBCore:GetObject', function(obj) QBCore = obj end)
 
 RegisterServerEvent('qb-pizzaruns:Payment')
 AddEventHandler('qb-pizzaruns:Payment', function()
