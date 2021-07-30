@@ -1,4 +1,5 @@
 # qb-pizzajob
+A pizza Deleivery Script for your server
 
 Author - https://github.com/ZAUB1/
 
