@@ -13,8 +13,9 @@ Config.Zones = {
 
 }
 
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
-AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+QBCore = exports['qb-core']:GetCoreObject()
+
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     isLoggedIn = true
     PlayerData = QBCore.Functions.GetPlayerData()
 end)
@@ -39,9 +40,9 @@ local PizzaDelivered = false
 local ownsVan = false
 
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(0)
         if not JuzBlip then
             Blipy['praca'] = AddBlipForCoord(538.17, 101.61, 96.53)
             SetBlipSprite(Blipy['praca'], 488)
@@ -78,9 +79,9 @@ function PullOutVehicle()
     end
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(0)
         if Hired then
             local ped = GetPlayerPed(-1)
             local pos = GetEntityCoords(ped)
@@ -282,9 +283,9 @@ function RemoveAllBlips()
     RemoveBlip(Blipy['end'])
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(0)
         local ped = GetPlayerPed(-1)
         local pos = GetEntityCoords(ped)
         local dist = GetDistanceBetweenCoords(pos, xxx, yyy, zzz, true)
@@ -321,9 +322,9 @@ Citizen.CreateThread(function()
     end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(10)
+		Wait(10)
 		if (not HasPizza) and NearVan then
 			if IsControlJustReleased(0, 38) then
                 TakePizza()
@@ -337,7 +338,7 @@ end)
 function loadAnimDict(dict)
 	while ( not HasAnimDictLoaded(dict)) do
 		RequestAnimDict(dict)
-		Citizen.Wait(0)
+		Wait(0)
 	end
 end
 
@@ -375,20 +376,20 @@ function DeliverPizza()
         HasPizza = false    
         NextDelivery()
         TriggerServerEvent('qb-mining:pizza')
-        Citizen.Wait(2500)
+        Wait(2500)
         PizzaDelivered = false
     end
 end
 
 function NextDelivery()
     TriggerServerEvent('qb-pizzajob:Payment')
-    Citizen.Wait(300)
+    Wait(300)
     DrawTarget()
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(0)
         local ped = GetPlayerPed(-1)
         local pos = GetEntityCoords(ped)
         local DistanceFromEndZone = GetDistanceBetweenCoords(pos, 571.25, 116.78, 97.36, true)
